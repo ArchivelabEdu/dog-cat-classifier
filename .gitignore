@@ -28,6 +28,9 @@ yarn-error.log*
 .vscode/
 .idea/
 
+# Design reference images (kept local, not published)
+uploads/
+
 # Misc
 *.tsbuildinfo
 coverage/

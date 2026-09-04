@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gothic+A1:wght@400;600;800;900&display=swap">
+  <style>
+    body { margin: 0; background: #0D0D11; font-family: 'Gothic A1', 'Apple SD Gothic Neo', sans-serif; }
+    a { color: #C6FF3D; text-decoration: none; }
+    a:hover { color: #A8E01F; }
+  </style>
+</helmet>
+
+<div style="width: 900px; background: #0D0D11; color: #F2F2F5;">
+
+  <!-- HERO -->
+  <div style="position: relative; overflow: hidden; padding: 38px 56px 46px; background-image: radial-gradient(#1E1E26 1.2px, transparent 1.2px); background-size: 22px 22px;">
+
+    <div style="position: absolute; right: -90px; top: -90px; width: 300px; height: 300px; border-radius: 50%; border: 2px solid #23232C;"></div>
+    <div style="position: absolute; right: 30px; top: 120px; width: 170px; height: 170px; border-radius: 50%; border: 2px solid #23232C;"></div>
+
+    <div style="position: relative; display: flex; flex-direction: column; gap: 30px;">
+
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div style="display: flex; align-items: center; gap: 11px;">
+          <div style="width: 12px; height: 12px; border-radius: 50%; background: #C6FF3D;"></div>
+          <span style="font-family: 'Bebas Neue', 'Gothic A1', sans-serif; font-size: 22px; letter-spacing: 2.5px; color: #F2F2F5;">DOG OR CAT</span>
+        </div>
+        <div style="display: flex; gap: 9px; font-size: 12px; font-weight: 700; letter-spacing: 0.4px;">
+          <span style="border: 1px solid #2A2A33; color: #9A9AA6; padding: 8px 15px; border-radius: 999px;">설치 없음</span>
+          <span style="border: 1px solid #2A2A33; color: #9A9AA6; padding: 8px 15px; border-radius: 999px;">사진 전송 없음</span>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 14px; max-width: 620px;">
+        <div style="font-size: 68px; font-weight: 900; line-height: 1.05; letter-spacing: -2.2px; color: #F2F2F5;">
+          사진 한 장이면<br><span style="color: #C6FF3D;">개인지 고양이인지</span> 끝
+        </div>
+        <div style="font-size: 17px; line-height: 1.7; color: #9A9AA6; max-width: 440px;">
+          판별은 브라우저 안에서 이뤄집니다. 사진은 어디에도 업로드되지 않고, 계정도 필요 없습니다.
+        </div>
+      </div>
+
+      <!-- DROPZONE -->
+      <div style="background: #14141A; border: 2px dashed #C6FF3D; border-radius: 22px; padding: 32px 34px; display: flex; align-items: center; justify-content: space-between; gap: 26px;">
+        <div style="display: flex; align-items: center; gap: 18px;">
+          <div style="width: 58px; height: 58px; border-radius: 16px; background: #1C1C24; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#C6FF3D" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 16V4"></path>
+              <path d="M7 9l5-5 5 5"></path>
+              <path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"></path>
+            </svg>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 5px;">
+            <div style="font-size: 18px; font-weight: 800; color: #F2F2F5;">사진을 끌어다 놓으세요</div>
+            <div style="font-size: 13.5px; color: #75757F;">JPG · PNG · 클릭해서 고를 수도 있습니다</div>
+          </div>
+        </div>
+        <div style="background: #C6FF3D; color: #0D0D11; font-size: 15px; font-weight: 800; padding: 15px 28px; border-radius: 999px; white-space: nowrap;">
+          사진 고르기
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RESULT -->
+  <div style="padding: 0 56px 40px;">
+    <div style="background: #14141A; border: 1px solid #23232C; border-radius: 26px; padding: 28px; display: flex; gap: 26px;">
+
+      <div style="width: 200px; height: 200px; border-radius: 18px; overflow: hidden; flex-shrink: 0;">
+        <svg viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="업로드한 사진 예시">
+          <rect width="200" height="200" fill="#1C1C24"></rect>
+          <ellipse cx="52" cy="78" rx="25" ry="41" transform="rotate(-18 52 78)" fill="#6E4426"></ellipse>
+          <ellipse cx="148" cy="78" rx="25" ry="41" transform="rotate(18 148 78)" fill="#6E4426"></ellipse>
+          <ellipse cx="100" cy="106" rx="57" ry="53" fill="#9C6335"></ellipse>
+          <ellipse cx="100" cy="134" rx="33" ry="25" fill="#C99B62"></ellipse>
+          <circle cx="80" cy="100" r="7" fill="#0D0D11"></circle>
+          <circle cx="120" cy="100" r="7" fill="#0D0D11"></circle>
+          <ellipse cx="100" cy="124" rx="10" ry="7.5" fill="#0D0D11"></ellipse>
+          <path d="M100 132 v7 M100 139 q-10 8 -18 1 M100 139 q10 8 18 1" stroke="#0D0D11" stroke-width="3.5" fill="none" stroke-linecap="round"></path>
+          <path d="M91 148 h18 a9 9 0 0 1 -18 0 z" fill="#FF3D9A"></path>
+        </svg>
+      </div>
+
+      <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; gap: 18px;">
+
+        <div style="font-size: 12px; font-weight: 800; letter-spacing: 2.4px; color: #75757F;">판별 결과</div>
+
+        <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 20px;">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="#C6FF3D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5.5 6.5c0-1.7.9-2.6 2-2.3 1.1.3 1.8 1.6 1.8 3"></path>
+              <path d="M18.5 6.5c0-1.7-.9-2.6-2-2.3-1.1.3-1.8 1.6-1.8 3"></path>
+              <path d="M12 20c-3.6 0-6.2-2.4-6.2-5.8C5.8 10.6 8.4 7.5 12 7.5s6.2 3.1 6.2 6.7C18.2 17.6 15.6 20 12 20z"></path>
+              <circle cx="9.6" cy="13.4" r="0.9" fill="#C6FF3D"></circle>
+              <circle cx="14.4" cy="13.4" r="0.9" fill="#C6FF3D"></circle>
+            </svg>
+            <div style="font-size: 46px; font-weight: 900; letter-spacing: -1.4px; color: #F2F2F5; line-height: 1;">개입니다</div>
+          </div>
+          <div style="font-family: 'Bebas Neue', sans-serif; font-size: 76px; line-height: 0.82; color: #C6FF3D; letter-spacing: 1px;">87<span style="font-size: 34px;">%</span></div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 9px;">
+          <div style="height: 8px; border-radius: 999px; background: #23232C; overflow: hidden;">
+            <div style="width: 87%; height: 100%; background: #C6FF3D; border-radius: 999px;"></div>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 12px; color: #75757F; font-weight: 600;">
+            <span>신뢰도</span>
+            <span>30% 미만이면 판별하지 않습니다</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- STATES -->
+  <div style="padding: 0 56px 40px; display: flex; flex-direction: column; gap: 14px;">
+    <div style="font-size: 12px; font-weight: 800; letter-spacing: 2.4px; color: #75757F;">가능한 답</div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;">
+
+      <div style="background: #14141A; border: 1px solid #23232C; border-radius: 16px; padding: 18px; display: flex; align-items: center; gap: 11px;">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#C6FF3D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5.5 6.5c0-1.7.9-2.6 2-2.3 1.1.3 1.8 1.6 1.8 3"></path>
+          <path d="M18.5 6.5c0-1.7-.9-2.6-2-2.3-1.1.3-1.8 1.6-1.8 3"></path>
+          <path d="M12 20c-3.6 0-6.2-2.4-6.2-5.8C5.8 10.6 8.4 7.5 12 7.5s6.2 3.1 6.2 6.7C18.2 17.6 15.6 20 12 20z"></path>
+        </svg>
+        <span style="font-size: 14.5px; font-weight: 700;">개입니다</span>
+      </div>
+
+      <div style="background: #14141A; border: 1px solid #23232C; border-radius: 16px; padding: 18px; display: flex; align-items: center; gap: 11px;">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#FF3D9A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 5.5l1.4 4"></path>
+          <path d="M19 5.5l-1.4 4"></path>
+          <path d="M5 5.5l3.6 2.2"></path>
+          <path d="M19 5.5l-3.6 2.2"></path>
+          <path d="M12 20c-3.7 0-6.4-2.5-6.4-6S8.3 7.4 12 7.4s6.4 3.1 6.4 6.6S15.7 20 12 20z"></path>
+        </svg>
+        <span style="font-size: 14.5px; font-weight: 700;">고양이입니다</span>
+      </div>
+
+      <div style="background: #14141A; border: 1px solid #23232C; border-radius: 16px; padding: 18px; display: flex; align-items: center; gap: 11px;">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#75757F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"></circle>
+          <path d="M9.6 9.6a2.5 2.5 0 1 1 3.2 2.4c-.7.2-1.1.8-1.1 1.5v.3"></path>
+          <circle cx="11.7" cy="16.8" r="0.9" fill="#75757F" stroke="none"></circle>
+        </svg>
+        <span style="font-size: 14.5px; font-weight: 700; color: #9A9AA6;">둘 다 아닙니다</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="padding: 0 56px 44px;">
+    <div style="border-top: 1px solid #23232C; padding-top: 22px; display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; color: #75757F; font-weight: 600;">
+      <span>브라우저에서만 판별 · 사진 전송 없음</span>
+      <span style="font-family: 'Bebas Neue', sans-serif; letter-spacing: 1.6px; font-size: 15px; color: #9A9AA6;">TENSORFLOW.JS MOBILENET</span>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

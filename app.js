@@ -21,11 +21,21 @@ const CAT_KEYWORDS = [
 
 const THRESHOLD = 0.3;
 
+const VERDICTS = {
+  dog: { icon: '#i-dog', text: '개입니다' },
+  cat: { icon: '#i-cat', text: '고양이입니다' },
+  unknown: { icon: '#i-unknown', text: '개나 고양이로 보이지 않습니다' },
+};
+
 const statusEl = document.getElementById('status');
 const dropzone = document.getElementById('dropzone');
 const fileInput = document.getElementById('fileInput');
-const preview = document.getElementById('preview');
 const resultEl = document.getElementById('result');
+const preview = document.getElementById('preview');
+const verdictIcon = document.getElementById('verdictIcon');
+const verdictText = document.getElementById('verdictText');
+const percentEl = document.getElementById('percent');
+const meterFill = document.getElementById('meterFill');
 
 let model = null;
 
@@ -49,29 +59,33 @@ function scoreVerdict(predictions) {
   return { type: dog >= cat ? 'dog' : 'cat', confidence };
 }
 
-function showResult(text, isError = false) {
-  resultEl.textContent = text;
-  resultEl.classList.toggle('error', isError);
-  resultEl.hidden = false;
+function setStatus(text, isError = false) {
+  statusEl.textContent = text;
+  statusEl.classList.toggle('error', isError);
+}
+
+function showVerdict(type, confidence) {
+  const { icon, text } = VERDICTS[type];
+  const percent = Math.round(confidence * 100);
+
+  resultEl.className = `result is-${type}`;
+  verdictIcon.setAttribute('href', icon);
+  verdictText.textContent = text;
+  percentEl.textContent = `${percent}%`;
+  meterFill.style.width = `${percent}%`;
 }
 
 async function classify() {
-  showResult('판별 중...');
+  setStatus('판별 중...');
   try {
     const predictions = await model.classify(preview, 5);
     const { type, confidence } = scoreVerdict(predictions);
-    const percent = Math.round(confidence * 100);
-
-    if (type === 'dog') {
-      showResult(`🐶 개입니다 (신뢰도 ${percent}%)`);
-    } else if (type === 'cat') {
-      showResult(`🐱 고양이입니다 (신뢰도 ${percent}%)`);
-    } else {
-      showResult('❓ 개나 고양이로 보이지 않습니다');
-    }
+    showVerdict(type, confidence);
+    setStatus('다른 사진도 올려보세요.');
   } catch (err) {
     console.error(err);
-    showResult('판별에 실패했습니다. 다시 시도해주세요.', true);
+    resultEl.hidden = true;
+    setStatus('판별에 실패했습니다. 다시 시도해주세요.', true);
   }
 }
 
@@ -79,18 +93,22 @@ function handleFile(file) {
   if (!file) return;
 
   if (!file.type.startsWith('image/')) {
-    preview.hidden = true;
-    showResult('이미지 파일만 업로드 가능합니다.', true);
+    resultEl.hidden = true;
+    setStatus('이미지 파일만 업로드 가능합니다.', true);
     return;
   }
 
   if (!model) {
-    showResult('모델을 아직 불러오는 중입니다. 잠시 후 다시 시도해주세요.', true);
+    setStatus('모델을 아직 불러오는 중입니다. 잠시 후 다시 시도해주세요.', true);
     return;
   }
 
+  resultEl.className = 'result is-pending';
+  resultEl.hidden = false;
+  verdictText.textContent = '판별 중...';
+  meterFill.style.width = '0';
+
   preview.src = URL.createObjectURL(file);
-  preview.hidden = false;
   preview.onload = classify;
 }
 
@@ -114,10 +132,9 @@ dropzone.addEventListener('drop', (e) => {
 mobilenet.load()
   .then((loaded) => {
     model = loaded;
-    statusEl.textContent = '준비 완료! 사진을 올려보세요.';
+    setStatus('준비 완료! 사진을 올려보세요.');
   })
   .catch((err) => {
     console.error(err);
-    statusEl.textContent = '모델을 불러오지 못했습니다. 새로고침 해주세요.';
-    statusEl.classList.add('error');
+    setStatus('모델을 불러오지 못했습니다. 새로고침 해주세요.', true);
   });
