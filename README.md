@@ -2,6 +2,8 @@
 
 사진을 올리면 개인지 고양이인지 판별해주는 웹 서비스입니다. 판별은 브라우저 안에서 이루어지므로 서버도, API 키도 필요 없고 사진이 외부로 전송되지 않습니다.
 
+**데모: https://archivelabedu.github.io/dog-cat-classifier/**
+
 ![스크린샷](docs/screenshot.png)
 
 ## 실행 방법
